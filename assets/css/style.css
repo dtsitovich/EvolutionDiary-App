@@ -29,6 +29,7 @@ body {
 
 .wrapper {
   max-width: 1440px;
+  padding: 40px 0;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -49,8 +50,8 @@ body {
   align-items: center;
   gap: 40px;
   background: url(../images/png/evolution.png) no-repeat;
-  background-position: 90% 0;
-  background-size: contain;
+  background-position: 90% center;
+  background-size: 300px 100px;
 }
 .header .logo {
   height: 108px;
