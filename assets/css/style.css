@@ -23,7 +23,7 @@
 }
 
 body {
-  background: #eee;
+  background: rgb(238, 238, 238);
   font-family: Heebo-Regular;
 }
 
@@ -36,14 +36,21 @@ body {
 }
 .app {
   width: 1140px;
-  background: #f3f6fd;
+  display: flex;
+  flex-flow: row wrap;
+  background: rgb(243, 246, 253);
 }
 .header {
+  width: 100%;
+  padding: 20px 40px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
   gap: 40px;
+  background: url(../images/png/evolution.png) no-repeat;
+  background-position: 90% 0;
+  background-size: contain;
 }
 .header .logo {
   height: 108px;
@@ -58,9 +65,9 @@ body {
 }
 
 .panel {
-  width: 190px;
+  width: 16.316%;
   padding: 60px 0;
-  background: #fbfaff;
+  background: rgb(251, 250, 255);
 }
 .aside-menu {
   display: flex;
@@ -72,13 +79,13 @@ body {
   width: 48px;
   height: 48px;
   cursor: pointer;
-  background: #fff;
+  background: rgb(255, 255, 255);
   border: none;
   border-radius: 14px;
   box-shadow: 0px 8px 14px 0px rgba(62, 107, 224, 0.12);
 }
 .aside-menu-item:hover {
-  background: #6a6afb;
+  background: rgb(106, 106, 251);
 }
 /* .aside-menu-item.active {
   background: #6a6afb;
@@ -91,7 +98,7 @@ body {
   background-position: center;
 }
 .aside-menu-item:nth-of-type(1):hover {
-  background: #6a6afb;
+  background: rgb(106, 106, 251);
   background-image: url("../images/svg/dumbbell-hover.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -102,7 +109,7 @@ body {
   background-position: center;
 }
 .aside-menu-item:nth-of-type(2):hover {
-  background: #6a6afb;
+  background: rgb(106, 106, 251);
   background-image: url("../images/svg/water-hover.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -113,7 +120,7 @@ body {
   background-position: center;
 }
 .aside-menu-item:nth-of-type(3):hover {
-  background: #6a6afb;
+  background: rgb(106, 106, 251);
   background-image: url("../images/svg/food-hover.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -122,11 +129,138 @@ body {
   background-image: url("../images/svg/add.svg");
   background-repeat: no-repeat;
   background-position: center;
-  border: 1px solid #cad5ff;
+  border: 1px solid rgb(202, 213, 255);
 }
 .aside-menu-item.add:hover {
-  background: #b2b2f8;
+  background: rgb(178, 178, 248);
   background-image: url("../images/svg/add-hover.svg");
   background-repeat: no-repeat;
   background-position: center;
+}
+.content {
+  width: 83.684%;
+  height: 0;
+  padding: 50px;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.content > h2 {
+  flex-basis: 80%;
+  font: 30px "Heebo-Medium";
+}
+.progress {
+  padding-top: 16px;
+  margin-bottom: 24px;
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.progress-text {
+  font: 14px "Heebo-Regular";
+  display: flex;
+  justify-content: space-between;
+}
+.progress-percent {
+  font: 12px "Heebo-Regular";
+  color: rgb(118, 131, 150);
+}
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  position: relative;
+  background: rgb(230, 233, 237);
+  border-radius: 6px;
+}
+.progress-bar-wrapper {
+  width: 80%;
+  height: 5px;
+  position: absolute;
+  border-radius: 6px;
+  background: rgb(80, 81, 249);
+}
+.record {
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.record-day,
+.record-text {
+  padding: 18px 38px;
+}
+.record-day {
+  width: 130px;
+  padding: 20px 38px;
+  font: 16px "Heebo-SemiBolt";
+  background: rgb(251, 250, 255);
+  border-radius: 10px 0 0 10px;
+}
+.record-text {
+  width: 100%;
+  font: 16px "Heebo-SemiBold";
+  font-weight: 500;
+  color: rgb(35, 35, 95);
+}
+.record-remove {
+  width: 24px;
+  height: 24px;
+  margin: 0 15px 0 auto;
+  background-image: url(../images/svg/delete.svg);
+  background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
+.record-remove:hover {
+  background: rgb(178, 178, 248);
+  background-image: url(../images/svg/delete-hover.svg);
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+}
+.record input {
+  width: 100%;
+  padding: 7px 14px;
+  font: 14px "Heebo-Regular";
+  color: rgb(136, 153, 168);
+  background: #fff;
+  border: 1px solid #e7ebfb;
+  border-radius: 9px;
+}
+.record input:focus {
+  border-color: rgb(204, 204, 204);
+  outline: none;
+}
+.record-add {
+  width: 100%;
+  padding: 10px 12px;
+  color: rgb(35, 35, 95);
+  font: 16px "Heebo-SemiBolt";
+  display: flex;
+  gap: 15px;
+  position: relative;
+}
+
+.record-add .input-icon {
+  padding-left: 48px;
+  background: url("../images/svg/comment.svg") no-repeat 20px center;
+  background-size: 18px 18px;
+}
+
+.record-add > button {
+  padding: 8px 30px;
+  font: 500 13px "Heebo-Regular";
+  color: rgb(80, 81, 249);
+  background: #edecfe;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.record-add > button:hover {
+  color: rgb(255, 255, 255);
+  background: rgb(106, 106, 251);
 }
