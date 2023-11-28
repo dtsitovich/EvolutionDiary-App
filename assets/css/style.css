@@ -88,11 +88,11 @@ body {
 .aside-menu-item:hover {
   background: rgb(106, 106, 251);
 }
-/* .aside-menu-item.active {
+.aside-menu-item.active {
   background: #6a6afb;
   border-radius: 14px;
   box-shadow: 0px 8px 14px 0px rgba(62, 107, 224, 0.12);
-} */
+}
 .aside-menu-item:nth-of-type(1) {
   background-image: url("../images/svg/dumbbell.svg");
   background-repeat: no-repeat;
