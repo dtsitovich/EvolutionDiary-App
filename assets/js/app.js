@@ -1,6 +1,50 @@
 'use strict';
 
-let habits = [];
+let habits = [
+    [
+        {
+            id: 1,
+            icon: "sport",
+            name: "kliky",
+            target: 10,
+            image: "dumbbell.svg",
+            days: [
+                { comment: "Nějaký popis" },
+                { comment: "Něco navíc" }
+            ]
+        },
+        {
+            id: 2,
+            icon: "water",
+            name: "volný čas",
+            target: 10,
+            image: "water.svg",
+            days: [
+                { comment: "Výborně" }
+            ]
+        },
+        {
+            id: 3,
+            icon: "food",
+            name: "zdravá výživa",
+            target: 10,
+            image: "food.svg",
+            days: [
+                { comment: "Výborně" }
+            ]
+        },
+        {
+            id: 4,
+            icon: "add",
+            name: "přidat koniček",
+            target: 10,
+            image: "add.svg",
+            days: [
+                { comment: "Výborně" }
+            ]
+        }
+    ]
+];
 const HABIT_KEY = 'HABIT_KEY';
 
 /* Page */
@@ -28,8 +72,8 @@ function saveData() {
 function menuRender(activeMenuItem) {
     if (!activeMenuItem) return;
 
-    for (let index = 0; index < habits.length; index++) {
-        let habit = habits[index];
+    for (let index = 0; index < habits[0].length; index++) {
+        let habit = habits[0][index];
         let isExists = document.querySelector(`[menu-item-id="${habit.id}"]`);
 
         let element;
@@ -39,15 +83,16 @@ function menuRender(activeMenuItem) {
             element.setAttribute('menu-item-id', habit.id);
             element.classList.add('aside-menu-item');
 
-            element.addEventListener('click', () => rerender(habit.id));
+            element.addEventListener('click', () => rerender(habit));
 
             page.menu.appendChild(element);
-        } else {
+        }
+        else {
             element = isExists;
             element.classList.remove('active');
         }
 
-        let lastIndex = habits.length - 1;
+        let lastIndex = habits[0].length - 1;
 
         if (index === lastIndex) {
             element.classList.add('add');
@@ -55,6 +100,18 @@ function menuRender(activeMenuItem) {
 
         if (activeMenuItem.id === habit.id) {
             element.classList.add('active');
+            element.style.backgroundImage = `url("assets/images/svg/${habit.image.replace('.svg', '-hover.svg')}")`;
+
+            const firstMenuItem = document.querySelector('[menu-item-id="1"]');
+            if (firstMenuItem && !firstMenuItem.classList.contains('active')) {
+                firstMenuItem.classList.remove('default');
+                firstMenuItem.style.backgroundColor = '';
+                firstMenuItem.style.backgroundImage = '';
+            }
+
+        } else if (index === 0) {
+            element.classList.add('default');
+            element.style.backgroundColor = '#6a6afb';
             element.style.backgroundImage = `url("assets/images/svg/${habit.image.replace('.svg', '-hover.svg')}")`;
         } else {
             element.style.backgroundImage = `url("assets/images/svg/${habit.image}")`;
@@ -76,13 +133,12 @@ function menuRender(activeMenuItem) {
     }
 }
 
-function rerender(activeMenuItemId) {
-    let activeMenuItem = habits.find(habit => habit.id === activeMenuItemId);
+function rerender(activeMenuItem) {
     menuRender(activeMenuItem);
 }
 
 // init
 (() => {
     loadData();
-    rerender(habits[0].id);
+    rerender(habits[0][0].id);
 })();
