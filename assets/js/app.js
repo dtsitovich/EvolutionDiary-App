@@ -45,12 +45,18 @@ let habits = [
         }
     ]
 ];
+
 const HABIT_KEY = 'HABIT_KEY';
 
 /* Page */
 
 const page = {
-    menu: document.querySelector('.aside-menu')
+    menu: document.querySelector('.aside-menu'),
+    content: {
+        h2: document.querySelector('.content h2'),
+        progressPercent: document.querySelector('.progress-percent'),
+        progressCover: document.querySelector('.progress-bar-wrapper'),
+    }
 }
 
 /* Local Storage */
@@ -133,12 +139,37 @@ function menuRender(activeMenuItem) {
     }
 }
 
-function rerender(activeMenuItem) {
+function contentRender(activeMenuItem) {
+    if (!activeMenuItem) return;
+
+    page.content.h2.innerText = activeMenuItem.name;
+
+    const progress = activeMenuItem.days.length / activeMenuItem.target > 1
+        ? 100
+        : activeMenuItem.days.length / activeMenuItem.target * 100;
+
+    page.content.progressPercent.innerText = progress.toFixed(0) + '%';
+
+    page.content.progressCover.setAttribute('style', `width: ${progress}%`);
+}
+
+function rerender(accessByObjectOrId) {
+    const activeMenuItem = typeof accessByObjectOrId === 'number'
+        ? habits[0].find(activeMenuItem => activeMenuItem.id === accessByObjectOrId)
+        : accessByObjectOrId;
+
+    if (!activeMenuItem) {
+        console.error('Invalid value. Access by Object or Id:', accessByObjectOrId);
+        return;
+    }
+
     menuRender(activeMenuItem);
+    contentRender(activeMenuItem);
 }
 
 // init
 (() => {
     loadData();
     rerender(habits[0][0].id);
+    saveData();
 })();

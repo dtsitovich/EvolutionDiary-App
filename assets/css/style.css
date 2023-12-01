@@ -183,11 +183,12 @@ body {
   border-radius: 6px;
 }
 .progress-bar-wrapper {
-  width: 80%;
+  /* width: 20%; */
   height: 5px;
   position: absolute;
   border-radius: 6px;
   background: rgb(80, 81, 249);
+  transition: all 0.5s;
 }
 .record {
   width: 100%;
