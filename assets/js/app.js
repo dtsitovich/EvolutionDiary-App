@@ -56,6 +56,10 @@ const page = {
         h2: document.querySelector('.content h2'),
         progressPercent: document.querySelector('.progress-percent'),
         progressCover: document.querySelector('.progress-bar-wrapper'),
+        records: {
+            recordsContainer: document.querySelector('.active-records'),
+            recordDay: document.querySelector('.record-day')
+        }
     }
 }
 
@@ -151,6 +155,19 @@ function contentRender(activeMenuItem) {
     page.content.progressPercent.innerText = progress.toFixed(0) + '%';
 
     page.content.progressCover.setAttribute('style', `width: ${progress}%`);
+
+    page.content.records.recordsContainer.innerHTML = '';
+
+    for (let index in activeMenuItem.days) {
+        let element = document.createElement('div');
+        element.classList.add('record');
+        element.innerHTML = `<span class="record-day">Den ${Number(index) + 1}.</span>
+        <span class="record-text">${activeMenuItem.days[index].comment}</span>
+        <button class="record-remove"></button>`;
+        page.content.records.recordsContainer.appendChild(element);
+    }
+
+    page.content.records.recordDay.innerHTML = `Den ${activeMenuItem.days.length + 1}.`
 }
 
 function rerender(accessByObjectOrId) {
