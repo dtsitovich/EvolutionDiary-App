@@ -143,6 +143,8 @@ function menuRender(activeMenuItem) {
     }
 }
 
+/* Content rendering */
+
 function contentRender(activeMenuItem) {
     if (!activeMenuItem) return;
 
@@ -163,12 +165,57 @@ function contentRender(activeMenuItem) {
         element.classList.add('record');
         element.innerHTML = `<span class="record-day">Den ${Number(index) + 1}.</span>
         <span class="record-text">${activeMenuItem.days[index].comment}</span>
-        <button class="record-remove"></button>`;
+        <button class="record-remove" onclick="removeRecord(${index})"></button>`;
         page.content.records.recordsContainer.appendChild(element);
     }
 
     page.content.records.recordDay.innerHTML = `Den ${activeMenuItem.days.length + 1}.`
 }
+
+/* Add record comment */
+
+function addRecord(event) {
+    event.preventDefault();
+
+    const commentInput = document.querySelector('.input-icon');
+    const comment = commentInput.value.trim();
+    const activeMenuItem = document.querySelector('.aside-menu-item.active');
+
+    if (activeMenuItem) {
+        const activeMenuItemId = activeMenuItem.getAttribute('menu-item-id');
+        const activeMenuItemData = habits.flat().find(item => item.id === parseInt(activeMenuItemId));
+
+        if (activeMenuItemData.days.length < 10 && comment !== '') {
+            const newRecord = { comment: comment };
+            activeMenuItemData.days.push(newRecord);
+        }
+
+        rerender(activeMenuItemData);
+        saveData();
+    }
+
+    commentInput.value = '';
+}
+
+/* Remove record comment */
+
+function removeRecord(index) {
+    const activeMenuItem = document.querySelector('.aside-menu-item.active');
+
+    if (activeMenuItem) {
+        const activeMenuItemId = activeMenuItem.getAttribute('menu-item-id');
+        const activeMenuItemData = habits.flat().find(item => item.id === parseInt(activeMenuItemId));
+
+        if (index >= 0 && index < activeMenuItemData.days.length) {
+            activeMenuItemData.days.splice(index, 1);
+        }
+
+        rerender(activeMenuItemData);
+        saveData();
+    }
+}
+
+/* Page rerender */
 
 function rerender(accessByObjectOrId) {
     const activeMenuItem = typeof accessByObjectOrId === 'number'

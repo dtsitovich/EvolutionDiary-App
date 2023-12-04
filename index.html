@@ -55,10 +55,15 @@
               <button class="record-remove"></button>
             </div> -->
           <div class="record">
-            <span class="record-day">Den _.</span>
-            <form class="record-add">
-              <input class="input-icon" type="text" placeholder="Komentář" />
-              <button>Přidat</button>
+            <span class="record-day"></span>
+            <form class="record-add" onsubmit="addRecord(event)">
+              <input
+                class="input-icon"
+                name="comment"
+                type="text"
+                placeholder="Komentář"
+              />
+              <button type="submit">Přidat</button>
             </form>
           </div>
         </main>
