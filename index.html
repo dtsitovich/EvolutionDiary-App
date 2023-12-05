@@ -68,6 +68,33 @@
           </div>
         </main>
         <footer class="footer"></footer>
+        <div class="popup-wrapper popup-hidden">
+          <div class="popup">
+            <h3>Nový zvyk</h3>
+            <div class="icon-label">Ikonka</div>
+            <div class="icon-select">
+              <button class="icon" onclick="setIcon(this, 'sport')"></button>
+              <button
+                class="icon icon-active"
+                onclick="setIcon(this, 'drink')"
+              ></button>
+              <button class="icon" onclick="setIcon(this, 'food')"></button>
+            </div>
+            <form class="popup-form">
+              <input type="text" name="name" placeholder="Název" />
+              <input
+                type="text"
+                name="icon"
+                placeholder="Ikonka"
+                value="sport"
+                hidden
+              />
+              <input type="number" name="target" placeholder="Cíl" />
+              <button type="submit">Přidat</button>
+              <span class="popup-close" onclick="popupToggle()"></span>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
     <script src="assets/js/app.js"></script>

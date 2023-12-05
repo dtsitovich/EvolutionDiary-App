@@ -92,7 +92,7 @@ body {
   outline: none;
 }
 .aside-menu-item.active {
-  background: #6a6afb;
+  background: rgb(106, 106, 251);
   border-radius: 14px;
   box-shadow: 0px 8px 14px 0px rgba(62, 107, 224, 0.12);
 }
@@ -256,14 +256,13 @@ body {
   gap: 15px;
   position: relative;
 }
-
 .record-add .input-icon {
   padding-left: 48px;
   background: url("../images/svg/comment.svg") no-repeat 20px center;
   background-size: 18px 18px;
 }
-
-.record-add > button {
+.record-add > button,
+.popup-form > button {
   padding: 8px 30px;
   font: 500 13px "Heebo-Regular";
   color: rgb(80, 81, 249);
@@ -272,8 +271,150 @@ body {
   border-radius: 9px;
   cursor: pointer;
 }
-
-.record-add > button:hover {
+.record-add > button:hover,
+.popup-form > button:hover {
   color: rgb(255, 255, 255);
   background: rgb(106, 106, 251);
+}
+.popup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.popup-hidden {
+  display: none;
+}
+
+.popup {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
+}
+
+.popup h3 {
+  font: 24px "Heebo-Regular";
+  color: #000;
+  text-align: center;
+}
+
+.icon-label {
+  margin-bottom: 10px;
+  font: 14px "Heebo-Regular";
+  color: #768396;
+}
+
+.icon-select {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 25px;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(80, 81, 249);
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.icon:nth-of-type(1) {
+  background-image: url("../images/svg/dumbbell.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.icon:nth-of-type(2) {
+  background-image: url("../images/svg/water.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.icon:nth-of-type(3) {
+  background-image: url("../images/svg/food.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon:hover {
+  background: rgb(106, 106, 251);
+}
+.icon:nth-of-type(1):hover {
+  background-image: url("../images/svg/dumbbell-hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.icon:nth-of-type(2):hover {
+  background-image: url("../images/svg/water-hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.icon:nth-of-type(3):hover {
+  background-image: url("../images/svg/food-hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.icon-active {
+  background: rgb(106, 106, 251);
+}
+
+.icon:nth-of-type(1).icon-active {
+  background-image: url("../images/svg/dumbbell-hover.svg");
+}
+.icon:nth-of-type(2).icon-active {
+  background-image: url("../images/svg/water-hover.svg");
+}
+.icon:nth-of-type(3).icon-active {
+  background-image: url("../images/svg/food-hover.svg");
+}
+
+.popup-close {
+  width: 24px;
+  height: 24px;
+  padding: 12px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  background-image: url("../images/svg/close.svg");
+  border: none;
+  cursor: pointer;
+}
+.popup-close:hover {
+  border: 1px solid rgb(106, 106, 251);
+}
+
+.popup-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popup-form input {
+  width: 100%;
+  padding: 12px 20px;
+  color: rgb(136, 153, 168);
+  border: 1px solid #e7ebfb;
+  border-radius: 9px;
+}
+
+.popup-form input:focus {
+  outline: 1px solid rgb(106, 106, 251);
 }

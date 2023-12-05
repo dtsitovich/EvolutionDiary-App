@@ -60,6 +60,10 @@ const page = {
             recordsContainer: document.querySelector('.active-records'),
             recordDay: document.querySelector('.record-day')
         }
+    },
+    popup: {
+        popupCover: document.querySelector('.popup-wrapper'),
+        inputIcon: document.querySelector('.popup-form input[name="icon"]')
     }
 }
 
@@ -106,6 +110,7 @@ function menuRender(activeMenuItem) {
 
         if (index === lastIndex) {
             element.classList.add('add');
+            element.setAttribute('onclick', 'popupToggle()');
         }
 
         if (activeMenuItem.id === habit.id) {
@@ -213,6 +218,24 @@ function removeRecord(index) {
         rerender(activeMenuItemData);
         saveData();
     }
+}
+
+/* Popup */
+
+function popupToggle() {
+    if (page.popup.popupCover.classList.contains('popup-hidden')) {
+        page.popup.popupCover.classList.remove('popup-hidden');
+    } else {
+        page.popup.popupCover.classList.add('popup-hidden');
+    }
+}
+
+function setIcon(context, icon) {
+    page.popup.inputIcon.value = icon;
+    const activeIcon = document.querySelector('.icon.icon-active');
+    activeIcon.classList.remove('icon-active');
+    context.classList.add('icon-active');
+
 }
 
 /* Page rerender */
