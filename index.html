@@ -73,23 +73,20 @@
             <h3>Nový zvyk</h3>
             <div class="icon-label">Ikonka</div>
             <div class="icon-select">
-              <button class="icon" onclick="setIcon(this, 'sport')"></button>
-              <button
-                class="icon icon-active"
-                onclick="setIcon(this, 'drink')"
-              ></button>
+              <button class="icon" onclick="setIcon(this, 'dumbbell')"></button>
+              <button class="icon" onclick="setIcon(this, 'water')"></button>
               <button class="icon" onclick="setIcon(this, 'food')"></button>
             </div>
-            <form class="popup-form">
-              <input type="text" name="name" placeholder="Název" />
+            <form class="popup-form" onsubmit="addMenuItem(event)">
+              <input type="text" name="name" placeholder="Název" required />
               <input
                 type="text"
                 name="icon"
                 placeholder="Ikonka"
-                value="sport"
+                value="water"
                 hidden
               />
-              <input type="number" name="target" placeholder="Cíl" />
+              <input type="number" name="target" placeholder="Cíl" required />
               <button type="submit">Přidat</button>
               <span class="popup-close" onclick="popupToggle()"></span>
             </form>

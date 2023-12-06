@@ -86,6 +86,8 @@ function saveData() {
 function menuRender(activeMenuItem) {
     if (!activeMenuItem) return;
 
+    page.menu.innerHTML = ''; // Clearing menu content before rendering
+
     for (let index = 0; index < habits[0].length; index++) {
         let habit = habits[0][index];
         let isExists = document.querySelector(`[menu-item-id="${habit.id}"]`);
@@ -223,6 +225,9 @@ function removeRecord(index) {
 /* Popup */
 
 function popupToggle() {
+    const popupForm = document.querySelector('.popup-form');
+    popupForm.reset();
+
     if (page.popup.popupCover.classList.contains('popup-hidden')) {
         page.popup.popupCover.classList.remove('popup-hidden');
     } else {
@@ -232,10 +237,50 @@ function popupToggle() {
 
 function setIcon(context, icon) {
     page.popup.inputIcon.value = icon;
-    const activeIcon = document.querySelector('.icon.icon-active');
-    activeIcon.classList.remove('icon-active');
-    context.classList.add('icon-active');
 
+    const iconsAll = document.querySelectorAll('.icon');
+
+    iconsAll.forEach(iconElement => {
+        iconElement.classList.remove('icon-active');
+    });
+
+    context.classList.add('icon-active'); // Adding .icon-active for selected icon only
+}
+
+function addMenuItem(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const nameInput = form.querySelector('input[name="name"]');
+    const iconInput = form.querySelector('input[name="icon"]');
+    const targetInput = form.querySelector('input[name="target"]');
+
+    const name = nameInput.value.trim();
+    const icon = iconInput.value.trim();
+    const target = parseInt(targetInput.value);
+
+    const activeIcon = document.querySelector('.icon.icon-active');
+    if (!activeIcon) {
+        alert('Please choose habit category to continue.');
+        return;
+    } // Checking if the icon is selected
+
+    if (name && icon && !isNaN(target) && target > 0) {
+        const newMenuItem = {
+            id: habits[0].length + 1,
+            icon: icon,
+            name: name,
+            target: target,
+            image: `${icon}.svg`,
+            days: []
+        };
+
+        habits[0].splice(habits[0].length - 1, 0, newMenuItem);//Insert new element before the last menu item
+
+        popupToggle();
+        saveData();
+        rerender(newMenuItem);
+    }
 }
 
 /* Page rerender */
