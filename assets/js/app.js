@@ -176,6 +176,14 @@ function contentRender(activeMenuItem) {
         page.content.records.recordsContainer.appendChild(element);
     }
 
+    // Show or hide the record form when target is reached
+
+    const addNewRecord = document.querySelector('.content > .record');
+
+    if (addNewRecord) {
+        addNewRecord.style.display = activeMenuItem.days.length >= activeMenuItem.target ? 'none' : 'flex';
+    }
+
     page.content.records.recordDay.innerHTML = `Den ${activeMenuItem.days.length + 1}.`
 }
 
@@ -192,7 +200,7 @@ function addRecord(event) {
         const activeMenuItemId = activeMenuItem.getAttribute('menu-item-id');
         const activeMenuItemData = habits.flat().find(item => item.id === parseInt(activeMenuItemId));
 
-        if (activeMenuItemData.days.length < 10 && comment !== '') {
+        if (activeMenuItemData.days.length < activeMenuItemData.target && comment !== '') {
             const newRecord = { comment: comment };
             activeMenuItemData.days.push(newRecord);
         }
