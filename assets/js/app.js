@@ -84,7 +84,6 @@ function saveData() {
 /* Menu rendering */
 
 function menuRender(activeMenuItem) {
-    if (!activeMenuItem) return;
 
     page.menu.innerHTML = ''; // Clearing menu content before rendering
 
@@ -153,7 +152,6 @@ function menuRender(activeMenuItem) {
 /* Content rendering */
 
 function contentRender(activeMenuItem) {
-    if (!activeMenuItem) return;
 
     page.content.h2.innerText = activeMenuItem.name;
 
@@ -298,10 +296,7 @@ function rerender(accessByObjectOrId) {
         ? habits[0].find(activeMenuItem => activeMenuItem.id === accessByObjectOrId)
         : accessByObjectOrId;
 
-    if (!activeMenuItem) {
-        console.error('Invalid value. Access by Object or Id:', accessByObjectOrId);
-        return;
-    }
+    if (!activeMenuItem) return;
 
     menuRender(activeMenuItem);
     contentRender(activeMenuItem);
