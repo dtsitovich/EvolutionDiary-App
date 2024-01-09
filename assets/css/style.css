@@ -212,6 +212,8 @@ body {
 }
 .record-text {
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font: 500 14px "Roboto";
   font-weight: 500;
   color: rgb(35, 35, 95);
@@ -219,7 +221,7 @@ body {
 .record-remove {
   width: 24px;
   height: 24px;
-  margin: 0 15px 0 auto;
+  margin: auto 16px;
   background-image: url(../images/svg/delete.svg);
   background-repeat: no-repeat;
   background-color: rgb(255, 255, 255);

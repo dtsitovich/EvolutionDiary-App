@@ -5,7 +5,7 @@ let habits = [
         {
             id: 1,
             icon: "sport",
-            name: "kliky",
+            name: "sport",
             target: 10,
             image: "dumbbell.svg",
             days: [
